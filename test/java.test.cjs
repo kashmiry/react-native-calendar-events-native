@@ -16,7 +16,7 @@ const testPath = path.join(
 );
 const hasJdk = spawnSync('javac', ['-version']).status === 0;
 
-test('Android all-day dates keep their local day and exclusive end', {
+test('Android all-day dates keep their local day and use an inclusive editor end', {
   skip: hasJdk ? false : 'JDK not available',
 }, () => {
   const outputDirectory = fs.mkdtempSync(

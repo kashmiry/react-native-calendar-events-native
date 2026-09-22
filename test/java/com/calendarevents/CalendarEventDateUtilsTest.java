@@ -15,13 +15,20 @@ public final class CalendarEventDateUtilsTest {
                 )
             );
             long startUtcMidnight = CalendarEventDateUtils.toUtcMidnight(
-                Instant.parse("2026-08-28T06:00:00Z").toEpochMilli()
+                Instant.parse("2026-09-22T21:00:00Z").toEpochMilli()
             );
             assertEquals(
-                "2026-08-29T00:00:00Z",
-                CalendarEventDateUtils.toExclusiveUtcMidnightEnd(
+                "2026-09-23T00:00:00Z",
+                CalendarEventDateUtils.toEditorUtcMidnightEnd(
                     startUtcMidnight,
-                    Instant.parse("2026-08-28T14:00:00Z").toEpochMilli()
+                    Instant.parse("2026-09-23T21:00:00Z").toEpochMilli()
+                )
+            );
+            assertEquals(
+                "2026-09-25T00:00:00Z",
+                CalendarEventDateUtils.toEditorUtcMidnightEnd(
+                    startUtcMidnight,
+                    Instant.parse("2026-09-25T21:00:00Z").toEpochMilli()
                 )
             );
 

@@ -27,11 +27,10 @@ final class CalendarEventDateUtils {
         return utcDate.getTimeInMillis();
     }
 
-    // Keep CalendarContract's all-day end exclusive
-    static long toExclusiveUtcMidnightEnd(long startUtcMidnight, long endMillis) {
+    //android editors display an inclusive end date for all-day events
+    static long toEditorUtcMidnightEnd(long startUtcMidnight, long endMillis) {
         long endUtcMidnight = toUtcMidnight(endMillis);
-        return endUtcMidnight <= startUtcMidnight
-            ? startUtcMidnight + TimeUnit.DAYS.toMillis(1)
-            : endUtcMidnight;
+        long editorEndUtcMidnight = endUtcMidnight - TimeUnit.DAYS.toMillis(1);
+        return Math.max(startUtcMidnight, editorEndUtcMidnight);
     }
 }

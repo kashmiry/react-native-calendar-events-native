@@ -314,7 +314,7 @@ public class CalendarEventsNativeModule extends NativeCalendarEventsNativeSpecSp
             }
             if (allDay) {
                 startMillis = CalendarEventDateUtils.toUtcMidnight(startMillis);
-                endMillis = CalendarEventDateUtils.toExclusiveUtcMidnightEnd(startMillis, endMillis);
+                endMillis = CalendarEventDateUtils.toEditorUtcMidnightEnd(startMillis, endMillis);
             }
 
             Intent intent = new Intent(Intent.ACTION_INSERT, Events.CONTENT_URI);
